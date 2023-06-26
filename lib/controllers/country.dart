@@ -11,7 +11,7 @@ class CountryController extends GetxController {
 
   RxList<Country> _countries = <Country>[].obs;
 
-  List<Country> get countries => _countries.value;
+  List<Country> get countries => _countries;
 
   bool get loading => _loading.value;
 
@@ -39,10 +39,10 @@ class CountryController extends GetxController {
     print("https://restcountries.com/v3.1/$url");
     final response = await http.get(Uri.parse("https://restcountries.com/v3.1/$url"));
     if (response.statusCode == 200) {
-      final List result = jsonDecode(response.body);
+      final List result = jsonDecode(utf8.decode(response.bodyBytes));
       _countries.value = result.map((e) => Country.fromJson(e)).toList();
       _loading.value = false;
-      return _countries.value;
+      return _countries;
     } else {
       _loading.value = false;
       return [];

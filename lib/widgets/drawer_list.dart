@@ -23,7 +23,6 @@ class DrawerList extends StatelessWidget{
                       text: "", style: DefaultTextStyle.of(context).style),
                 ),
                 onTap: () {
-                    // parameters(context,'countries from world', '');
                     onSelected('');
                     Navigator.of(context).pop();
                 },
@@ -34,7 +33,6 @@ class DrawerList extends StatelessWidget{
               onTap: () {
                 onSelected('europe');
                 Navigator.of(context).pop();
-                 // parameters(context,'List countries from europe', 'europe');
               },
             ),
             ListTile(
@@ -42,7 +40,6 @@ class DrawerList extends StatelessWidget{
               onTap: () {
                 onSelected('Americas');
                 Navigator.of(context).pop();
-                 // parameters(context,'List countries from America', 'Americas');
               },
             ),
             ListTile(
@@ -50,7 +47,6 @@ class DrawerList extends StatelessWidget{
               onTap: () {
                 onSelected('Asia');
                 Navigator.of(context).pop();
-                      // parameters(context, 'List countries from Asia', 'Asia');
               },
             ),
             ListTile(
@@ -58,7 +54,6 @@ class DrawerList extends StatelessWidget{
               onTap: () {
                 onSelected('Africa');
                 Navigator.of(context).pop();
-                      // parameters(context, 'List countries from Africa', 'Africa');
               },
             ),
             ListTile(
@@ -66,7 +61,6 @@ class DrawerList extends StatelessWidget{
               onTap: () {
                 onSelected('Oceania');
                 Navigator.of(context).pop();
-                      // parameters(context, 'List countries from Oceania', 'Oceania');
               },
             )
           ],

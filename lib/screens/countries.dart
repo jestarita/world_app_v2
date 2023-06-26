@@ -36,12 +36,12 @@ class _CountriesState extends State<Countries> {
             backgroundColor: Theme.of(context).colorScheme.inversePrimary,
             title: Text(controller.title),
           ),
-          body: controller.loading ? const Center(child: CircularProgressIndicator()) : CountriesList(
+          body: controller.loading ? const Center(child: CircularProgressIndicator()) : CountriesList2(
             countries: controller.countries,
           ),
           drawer: DrawerList(onSelected: (region){
             controller.getCountries(region);
-            controller.setTitle('Countries from $region');
+            controller.setTitle(region != '' ? 'Countries from $region' : 'All Countries');
           }),
         );
       },
