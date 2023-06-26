@@ -46,7 +46,7 @@ class CountriesList2 extends StatelessWidget {
                       textAlign: TextAlign.center,
                       style: const TextStyle(
                           color: Colors.black,
-                          fontSize: 29,
+                          fontSize: 26,
                           fontStyle: FontStyle.normal,
                           fontWeight: FontWeight.bold),
                     ),
