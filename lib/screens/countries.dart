@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:world_app_v2/controllers/country.dart';
 
-import 'package:world_app_v2/widgets/countries_list.dart';
+import 'package:world_app_v2/widgets/countries_list2.dart';
 import 'package:world_app_v2/widgets/drawer_list.dart';
 
 class Countries extends StatefulWidget {
@@ -17,51 +19,33 @@ class Countries extends StatefulWidget {
 }
 
 class _CountriesState extends State<Countries> {
-  Widget widgetForBody = CountriesList(
-    key: UniqueKey(),
-    regionGet: '',
-  );
 
-  String _title = '';
-  String _region = '';
-  void _setWidget(BuildContext contextGet, String title, String region) {
-    if (region != '') {
-      setState(() {
-        Navigator.of(context).pop();
-        _region = region;
-        widgetForBody = CountriesList(
-          regionGet: _region,
-          key: UniqueKey(),
-        );
-        _title = title;
-      });
-    } else {
-      setState(() {
-        Navigator.of(context).pop();
-        widgetForBody = CountriesList(
-          key: UniqueKey(),
-          regionGet: '',
-        );
-        _title = 'All Countries';
-      });
-    }
-  }
 
   @override
   void initState() {
-    _title = widget.title;
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: Text(_title),
-      ),
-      body: widgetForBody,
-      drawer: DrawerList(parameters: _setWidget),
+    return MixinBuilder<CountryController>(
+      init: CountryController(context),
+      builder: (controller){
+        return Scaffold(
+          appBar: AppBar(
+            backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+            title: Text(controller.title),
+          ),
+          body: controller.loading ? const Center(child: CircularProgressIndicator()) : CountriesList(
+            countries: controller.countries,
+          ),
+          drawer: DrawerList(onSelected: (region){
+            controller.getCountries(region);
+            controller.setTitle('Countries from $region');
+          }),
+        );
+      },
     );
+
   }
 }

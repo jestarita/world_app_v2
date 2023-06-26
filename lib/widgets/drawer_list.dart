@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 
 class DrawerList extends StatelessWidget{
-  const DrawerList({super.key, required this.parameters});
+  const DrawerList({super.key, required this.onSelected});
 
-  final Function(BuildContext context, String title, String region) parameters;
+  // final Function(BuildContext context, String title, String region) parameters;
+  final Function(String region) onSelected;
 
   @override
   Widget build(BuildContext context) {
@@ -22,38 +23,50 @@ class DrawerList extends StatelessWidget{
                       text: "", style: DefaultTextStyle.of(context).style),
                 ),
                 onTap: () {
-                    parameters(context,'countries from world', '');
+                    // parameters(context,'countries from world', '');
+                    onSelected('');
+                    Navigator.of(context).pop();
                 },
               ),
             ),
             ListTile(
               title: const Text('Europe'),
               onTap: () {
-                 parameters(context,'List countries from europe', 'europe');
+                onSelected('europe');
+                Navigator.of(context).pop();
+                 // parameters(context,'List countries from europe', 'europe');
               },
             ),
             ListTile(
               title: const Text('America'),
               onTap: () {
-                 parameters(context,'List countries from America', 'Americas');
+                onSelected('Americas');
+                Navigator.of(context).pop();
+                 // parameters(context,'List countries from America', 'Americas');
               },
             ),
             ListTile(
               title: const Text('Asia'),
               onTap: () {
-                      parameters(context, 'List countries from Asia', 'Asia');
+                onSelected('Asia');
+                Navigator.of(context).pop();
+                      // parameters(context, 'List countries from Asia', 'Asia');
               },
             ),
             ListTile(
               title: const Text('Africa'),
               onTap: () {
-                      parameters(context, 'List countries from Africa', 'Africa');
+                onSelected('Africa');
+                Navigator.of(context).pop();
+                      // parameters(context, 'List countries from Africa', 'Africa');
               },
             ),
             ListTile(
               title: const Text('Oceania'),
               onTap: () {
-                      parameters(context, 'List countries from Oceania', 'Oceania');
+                onSelected('Oceania');
+                Navigator.of(context).pop();
+                      // parameters(context, 'List countries from Oceania', 'Oceania');
               },
             )
           ],
